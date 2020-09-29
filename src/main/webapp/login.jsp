@@ -23,7 +23,7 @@
                 <input type="submit" value="Ingresar">
                 <%--crear cuenta --%>
                 <label>¿No tienes una cuenta?</label>
-                <a href="#">Registrate</a>
+                <a href="registrarse.jsp">Registrate</a>
             </form>
         </div>
         
