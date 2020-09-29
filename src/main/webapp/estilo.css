@@ -20,24 +20,44 @@ body{
     box-sizing: border-box;
     padding: 1px 40px;
 }
-.caja h1{ 
+.cajaRegistro{
+    width: 390px;
+    height: 1190px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 5px 40px;
+}
+.caja h1, .cajaRegistro h1{ 
     text-align: center;
     letter-spacing: 1px;
     font-family: "bill";
     font-size: 80px;
     font-weight: 350;
 }
-.caja label{
+.cajaRegistro h2{
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: "bill";
+    font-size: 45px;
+    font-weight: 200;
+}
+.caja label, .cajaRegistro label{
     margin: 2px;
     padding: 2px;
     font-weight: bold;
     display:block;
 }
-.caja input{
+.caja input , .cajaRegistro input {
     width: 100%;
     margin-bottom: 20px;
 }
-.caja input[type="text"], .caja input[type="password"]{
+.caja input[type="text"], .caja input[type="password"], .cajaRegistro input[type="text"], .cajaRegistro input[type="password"], 
+.cajaRegistro input[type="date"], .cajaRegistro input[type="number"], .cajaRegistro select{
     border-bottom: 1px solid    ;
     border-top: 1px solid;
     border-right: 1px solid;
@@ -49,7 +69,8 @@ body{
     height: 40px;
     font-size: 20px;
 }
-.caja input[type="submit"]{
+
+.caja input[type="submit"], .cajaRegistro input[type="submit"]{
     border: none;
     outline: none;
     background: #0095f6;
@@ -59,7 +80,7 @@ body{
     padding: 8px 5px;
     cursor:pointer;
 }
-.caja a{
+.caja a, .cajaRegistro a{
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;

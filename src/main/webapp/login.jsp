@@ -25,7 +25,6 @@
                 <label>¿No tienes una cuenta?</label>
                 <a href="registrarse.jsp">Registrate</a>
             </form>
-        </div>
-        
+        </div>        
     </body>
 </html>
