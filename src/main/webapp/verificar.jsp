@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 28/09/2020, 10:17:24 PM
+    Document   : verificar
+    Created on : 29/09/2020, 01:54:46 AM
     Author     : sergi
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>solo es el index</h1>
+        <h1>verificar</h1>
     </body>
 </html>
