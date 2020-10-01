@@ -73,7 +73,6 @@
                 <label>Ya posees una cuenta</label>
                 <a href="login.jsp">Inicia sesion</a>
             </form>
-
         </div>
 
     </body>

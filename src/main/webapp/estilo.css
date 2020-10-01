@@ -22,7 +22,7 @@ body{
 }
 .cajaRegistro{
     width: 390px;
-    height: 1190px;
+    height: 1165px;
     background: white;
     color: black;
     top: 50%;
@@ -32,12 +32,37 @@ body{
     box-sizing: border-box;
     padding: 5px 40px;
 }
-.caja h1, .cajaRegistro h1{ 
+.paciente{
+    width: 390px;
+    box-sizing: border-box;
+    margin-left: 37%;
+}
+.cabecera{
+    width: 125px;
+    margin-left: 91.7%;
+    box-sizing: border-box;
+    
+}
+
+.caja h1, .cajaRegistro h1, h1{ 
     text-align: center;
     letter-spacing: 1px;
     font-family: "bill";
     font-size: 80px;
     font-weight: 350;
+}
+h1{
+    font-size: 75px;
+    
+}
+h2,h3{
+    text-align: right;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 15px;
 }
 .cajaRegistro h2{
     text-align: center;
@@ -52,7 +77,7 @@ body{
     font-weight: bold;
     display:block;
 }
-.caja input , .cajaRegistro input {
+.caja input , .cajaRegistro input, input {
     width: 100%;
     margin-bottom: 20px;
 }
@@ -70,7 +95,7 @@ body{
     font-size: 20px;
 }
 
-.caja input[type="submit"], .cajaRegistro input[type="submit"]{
+.caja input[type="submit"], .cajaRegistro input[type="submit"], input[type="submit"]{
     border: none;
     outline: none;
     background: #0095f6;
@@ -80,6 +105,9 @@ body{
     padding: 8px 5px;
     cursor:pointer;
 }
+.cabecera  input[type="submit"]{
+    font-size: 15px;
+}
 .caja a, .cajaRegistro a{
     text-decoration: none;
     font-size: 16px;
@@ -87,6 +115,10 @@ body{
     display: block;
     line-height: 26px;
     color: #0095f6;
+}
+a{
+    text-decoration: none;
+    color:black;
 }
 
 
