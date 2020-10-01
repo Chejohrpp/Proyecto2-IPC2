@@ -11,18 +11,12 @@
         </style>
     </head>
     <body>
-        <%--cabecera --%>
         
-        <h2>Nombre del usuario</h2>
-        <h3>ID del usuario</h3>
-        <div class="cabecera">
-            <form action="paciente/perfil.jsp">
-                <input type="submit" value="modificar tu perfil">
-            </form>
-        </div>
-        <a href="CodeHero.jsp"><h1>Code Hero</h1></a>   
+        <%--cabecera --%>
+        <%@include file="cabecera.html" %>
         
         <%--Para el paciente --%>
+        
         <div class="paciente">
             <form action="paciente/buscarMedico.jsp">
                 <input type="submit" value="agendar una cita">
@@ -33,17 +27,61 @@
             <form action="paciente/buscarExamen.jsp">
                 <input type="submit" value="agendar un examen medico">
             </form>
+            <form action="paciente/citasMedicas.jsp">
+                <input type="submit" value="ver citas medicas">
+            </form> 
+            <form action="paciente/citasExamen.jsp">
+                <input type="submit" value="ver citas de examenes">
+            </form> 
             <form action="paciente/reportesPaciente.jsp">
                 <input type="submit" value="Reportes">
-            </form>            
-        </div>
+            </form> 
+        </div>      
         
-        <%--para el Admin --%>        
+        <%--para el Admin --%>
+        
+        <div class="paciente">
+            <form action="Admin/addMedico.jsp">
+                <input type="submit" value="agregar medico">
+            </form>
+            <form action="Admin/addLab.jsp">
+                <input type="submit" value="agregar laboratorista">
+            </form>
+            <form action="Admin/precioConsulta.jsp">
+                <input type="submit" value="cambiar precio a las consultas">
+            </form>
+            <form action="Admin/crearExamen.jsp">
+                <input type="submit" value="Crear examenes">
+            </form> 
+            <form action="Admin/reportes.jsp">
+                <input type="submit" value="reportes">
+            </form> 
+        </div>      
        
         <%--Para el doctor --%>
         
+         
+        <div class="paciente">
+            <form action="medico/informe.jsp">
+                <input type="submit" value="Generar informe">
+            </form>
+            <form action="medico/reportes.jsp">
+                <input type="submit" value="Reportes">
+            </form>
+            
+        </div>
+        
         <%--Para el laboratorista --%>
         
+        <div class="paciente">
+            <form action="laboratorista/informe.jsp">
+                <input type="submit" value="subir Resultados">
+            </form>
+            <form action="laboratorista/reportes.jsp">
+                <input type="submit" value="Reportes">
+            </form>
+            
+        </div>
         
     </body>
 </html>
