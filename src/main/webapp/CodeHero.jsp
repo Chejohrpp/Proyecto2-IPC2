@@ -13,7 +13,7 @@
     <body>
         
         <%--cabecera --%>
-        <%@include file="cabecera.html" %>
+        <%@include file="paciente/cabecera.html" %>
         
         <%--Para el paciente --%>
         
@@ -44,7 +44,7 @@
             <form action="Admin/addMedico.jsp">
                 <input type="submit" value="agregar medico">
             </form>
-            <form action="Admin/addLab.jsp">
+            <form action="Admin/AddLaboratorista.jsp">
                 <input type="submit" value="agregar laboratorista">
             </form>
             <form action="Admin/precioConsulta.jsp">
