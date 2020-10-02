@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Code Hero</title>
+        <link rel="styleSheet" href="estilosInteriores">
     </head>
     <body>
-        <h1>Buscamos un medico</h1>
+        <%@include file="cabecera.html" %>
+        <div class="datos">
+            <form action="#" method="GET">
+                <input type="text" name="buscarMedico" placeholder="Busca un tipo de examen">
+                <input type="submit" value="Buscar">
+                
+            </form>
+        </div>  
     </body>
 </html>

@@ -6,17 +6,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Code Hero</title>
-        <style>
-            <%@include file="estilo.css" %>
-        </style>
+        <link rel="styleSheet" href="estilo.css">
     </head>
-    <body>
-        
+    <body>        
         <%--cabecera --%>
-        <%@include file="paciente/cabecera.html" %>
-        
+        <h2>Nombre del usuario</h2>
+        <h3>ID del usuario</h3>
+        <div class="cabecera">
+            <% String tipo="paciente";
+                if (tipo.equalsIgnoreCase("paciente")){%>
+            <form action="paciente/perfil.jsp">
+                <input type="submit" value="modificar tu perfil">
+            </form>
+            <% } else if (tipo.equalsIgnoreCase("medico")){%>
+            <form action="medico/perfil.jsp">
+                <input type="submit" value="modificar tu perfil">
+            </form>
+            <% } else if (tipo.equalsIgnoreCase("laboratorista")){%>
+            <form action="laboratorista/perfil.jsp">
+                <input type="submit" value="modificar tu perfil">
+            </form>
+            <% } else if (tipo.equalsIgnoreCase("Admin")){%>
+            <form action="Admin/perfil.jsp">
+                <input type="submit" value="modificar tu perfil">
+            </form>
+            <% }%>
+        </div>
+        <a href="CodeHero.jsp"><h1>Code Hero</h1></a>
         <%--Para el paciente --%>
-        
+         <% if (tipo.equalsIgnoreCase("paciente")){%>
         <div class="paciente">
             <form action="paciente/buscarMedico.jsp">
                 <input type="submit" value="agendar una cita">
@@ -38,8 +56,9 @@
             </form> 
         </div>      
         
-        <%--para el Admin --%>
         
+        <%--para el Admin --%>
+         <% } else if (tipo.equalsIgnoreCase("Admin")){%>
         <div class="paciente">
             <form action="Admin/addMedico.jsp">
                 <input type="submit" value="agregar medico">
@@ -59,8 +78,7 @@
         </div>      
        
         <%--Para el doctor --%>
-        
-         
+        <% } else if (tipo.equalsIgnoreCase("medico")){%>         
         <div class="paciente">
             <form action="medico/informe.jsp">
                 <input type="submit" value="Generar informe">
@@ -72,16 +90,15 @@
         </div>
         
         <%--Para el laboratorista --%>
-        
+        <% } else if (tipo.equalsIgnoreCase("laboratorista")){%>
         <div class="paciente">
-            <form action="laboratorista/informe.jsp">
-                <input type="submit" value="subir Resultados">
+            <form action="laboratorista/buscarCita.jsp">
+                <input type="submit" value="Subir Resultados">
             </form>
             <form action="laboratorista/reportes.jsp">
                 <input type="submit" value="Reportes">
-            </form>
-            
+            </form>            
         </div>
-        
+        <% }%>
     </body>
 </html>
