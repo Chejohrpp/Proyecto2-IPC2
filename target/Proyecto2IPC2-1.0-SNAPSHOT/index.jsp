@@ -4,7 +4,9 @@
     Author     : sergi
 --%>
 
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="ConnectionDB.ConnectionDB" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>solo es el index</h1>
+        <% ConnectionDB conexionDB = new ConnectionDB();
+            Connection connection;
+        %>
+        <h1><%= conexionDB.verificar() %></h1>
     </body>
 </html>
