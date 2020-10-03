@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Configura tu perfil</title>
+        <link rel="styleSheet" href="../estilosInteriores.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <a href="../CodeHero.jsp"><h1>Code Hero</h1></a>
+        <div class="datos">
+            
+            
+        </div>
     </body>
 </html>

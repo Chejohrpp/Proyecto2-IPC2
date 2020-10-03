@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`laboratorista` (
   `telefono` VARCHAR(12) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `fecha_empezo` DATE NOT NULL,
-  `contraseña` VARCHAR(160) NOT NULL,
+  `contraseña` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 

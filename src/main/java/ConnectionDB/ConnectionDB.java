@@ -8,35 +8,34 @@ package ConnectionDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author sergi
  */
 public class ConnectionDB {
-    private Connection connection;
+    private static Connection connection = null;
+    private static ConnectionDB connectionDB;
     
-    public ConnectionDB(){
-        String url = "jdbc:mysql://localhost:3306/mysql";
+    private ConnectionDB(){
+        String url = "jdbc:mysql://localhost:3306/code_hero?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
         String user = "user";
         String password = "user";
         try{
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
            connection = DriverManager.getConnection(url, user, password);     
             System.out.println("se conceto");
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
+        } catch (IllegalAccessException | InstantiationException | ClassNotFoundException ex) {
+            Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public Connection getConnection(){
-        return connection;
-    }
-    public void closeConnection() throws SQLException{
-     connection.close();           
-    }
-    public String verificar(){
-        if (connection != null) {
-                return ("Conexion Establecida....");
-            }
-        return ("no se conecto");
+    public static Connection getInstance(){
+        if (connectionDB == null) {
+            connectionDB = new ConnectionDB();
+        }
+        return connection;        
     }
 }

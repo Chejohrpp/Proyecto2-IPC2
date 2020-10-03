@@ -9,9 +9,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Reportes</title>
+        <link rel="styleSheet" href="../estilosInteriores.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="cabecera.html"%>
+        <div class="datos">
+            <h2>Reportes</h2>
+            <form action="#">
+                <input type="submit" value="Últimos 5 exámenes de laboratorio realizados.">
+            </form>
+             <form action="#">
+                <input type="submit" value="Exámenes realizados de un tipo en específico dentro de un intervalo de tiempo.">
+            </form>
+             <form action="#">
+                <input type="submit" value="Últimas 5 consultas realizadas.">
+            </form>
+             <form action="#">
+                <input type="submit" value="Consultas realizadas con un médico en específico dentro de un intervalo de tiempo..">
+            </form>
+        </div>
     </body>
 </html>

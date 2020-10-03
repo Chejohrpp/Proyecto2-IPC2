@@ -45,7 +45,7 @@
             <form action="paciente/buscarExamen.jsp">
                 <input type="submit" value="agendar un examen medico">
             </form>
-            <form action="paciente/citasMedicas.jsp">
+            <form action="paciente/citasMedico.jsp">
                 <input type="submit" value="ver citas medicas">
             </form> 
             <form action="paciente/citasExamen.jsp">

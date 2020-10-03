@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Buscar Examen</title>
-        <link rel="styleSheet" href="estilosInteriores">
+        <link rel="styleSheet" href="../estilosInteriores.css">
     </head>
     <body>
         <%@include file="cabecera.html" %>

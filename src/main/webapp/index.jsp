@@ -6,17 +6,24 @@
 
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="ConnectionDB.ReadXML" %>
 <%@page import="ConnectionDB.ConnectionDB" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title></title>
+        <link rel="styleSheet" href="estilosInteriores.css">
     </head>
+    
     <body>
-        <% ConnectionDB conexionDB = new ConnectionDB();
-            Connection connection;
-        %>
-        <h1><%= conexionDB.verificar() %></h1>
+        <h1>La base de datos esta vacia</h1>
+        <div class="datos">
+            <% ReadXML read = new ReadXML(); %>
+            <form action="<% read.buscarDato();%>">
+                <input type="submit" value="Buscar archivo XML">                
+            </form>            
+        </div>
     </body>
 </html>
