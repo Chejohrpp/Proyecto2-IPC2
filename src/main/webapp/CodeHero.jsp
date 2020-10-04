@@ -21,8 +21,7 @@
         <%--cabecera --%>
         <h2>Nombre de usuario: <%= session.getAttribute("nombreUsuario")%></h2>
         <h3>ID: <%= session.getAttribute("id") %></h3>
-        <div class="cabecera">
-            
+        <div class="cabecera">            
             <% String tipo=  session.getAttribute("elTipo").toString();
                 if (tipo.equalsIgnoreCase("paciente")){%>
             <form action="paciente/perfil.jsp">
@@ -41,7 +40,10 @@
                 <input type="submit" value="modificar tu perfil">
             </form>
             <% }%>
-        </div>
+            <form action="logout">
+                <input type="submit" value="Cerrar sesion">
+            </form>
+        </div>        
         <a href="CodeHero.jsp"><h1>Code Hero</h1></a>
         <%--Para el paciente --%>
          <% if (tipo.equalsIgnoreCase("paciente")){%>
