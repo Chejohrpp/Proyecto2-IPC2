@@ -54,14 +54,12 @@ public class ControladorPaciente extends HttpServlet {
             /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD");
             LocalDate date = LocalDate.parse(fecha, formatter);*/
             
-            if (nombre != null && genero != null && pass != null && fecha != null && dpi != null && telefono != null && peso != null && sangre != null && email != null ) {
-                
+            if (nombre != null && genero != null && pass != null && fecha != null && dpi != null && telefono != null && peso != null && sangre != null && email != null) {                
                 long id = pacienteModelo.addPacienteSinCodigo(new Paciente(nombre,genero,fecha,dpi,telefono,Integer.valueOf(peso),sangre,email,pass));
-                System.out.println("New ID: " + id);
-                request.setAttribute("nombreUsuario", nombre);
                 request.setAttribute("id", id);
-                 request.getRequestDispatcher("CodeHero.jsp").forward(request, response);
+                request.getRequestDispatcher("verificar.jsp").forward(request, response);
             }
+            
         } catch (IOException | SQLException  e) {
             System.out.println("Error User: " + e.getMessage());
         } 
