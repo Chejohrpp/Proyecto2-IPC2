@@ -18,13 +18,13 @@
         <div class="cajaRegistro">
             <h1>Code Hero</h1>
              <h2>Registrate</h2>
-            <form action="subirRegistro.jsp" method="POST">
+            <form action="ControladorPaciente" method="POST">
                  <%--Nombre de usuario--%>
                 <label for="usuario">Nombre</label>
                 <input type="text" name="nombre" placeholder="Nombre">        
                 
                 <%--genero --%>
-                <label for="geneero">Genero</label>
+                <label for="genero">Genero</label>
                 <select name="generos" id="genero">
                     <option value="Mujer">Mujer</option>
                     <option value="Hombre">Hombre</option>
@@ -68,11 +68,11 @@
                 <input type="password" name="pass" placeholder="Contraseña">
                 
                 <%--boton --%>
-                <input type="submit" value="Registrarse">
+                <input type="submit" value="Registrarse">                
+            </form>
                 <%--crear cuenta --%>
                 <label>Ya posees una cuenta</label>
                 <a href="login.jsp">Inicia sesion</a>
-            </form>
         </div>
 
     </body>

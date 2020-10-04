@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -8,12 +9,21 @@
         <title>Code Hero</title>
         <link rel="styleSheet" href="estilo.css">
     </head>
-    <body>        
+    <body>
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+            if (session.getAttribute("id") == null) {
+                response.sendRedirect("login");
+            }else{            
+        %>
+        
         <%--cabecera --%>
-        <h2>Nombre del usuario</h2>
-        <h3>ID del usuario</h3>
+        <h2>Nombre de usuario: <%= session.getAttribute("nombreUsuario")%></h2>
+        <h3>ID: <%= session.getAttribute("id") %></h3>
         <div class="cabecera">
-            <% String tipo="paciente";
+            
+            <% String tipo=  session.getAttribute("elTipo").toString();
                 if (tipo.equalsIgnoreCase("paciente")){%>
             <form action="paciente/perfil.jsp">
                 <input type="submit" value="modificar tu perfil">
@@ -99,6 +109,7 @@
                 <input type="submit" value="Reportes">
             </form>            
         </div>
-        <% }%>
+        <% }}%>
+        
     </body>
 </html>

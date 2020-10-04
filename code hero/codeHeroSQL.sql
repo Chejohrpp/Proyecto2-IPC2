@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`paciente` (
   `peso` INT NOT NULL,
   `sangre` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(150) NOT NULL,
+  `contraseña` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`medico` (
   `horario_inicio` TIME NOT NULL,
   `horario_final` TIME NOT NULL,
   `fecha_empezo` DATE NOT NULL,
-  `contraseña` VARCHAR(150) NOT NULL,
+  `contraseña` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`laboratorista` (
   `telefono` VARCHAR(12) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `fecha_empezo` DATE NOT NULL,
-  `contraseña` VARCHAR(150) NOT NULL,
+  `contraseña` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`admin` (
   `codigo` VARCHAR(100) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `dpi` VARCHAR(16) NOT NULL,
-  `contraseña` VARCHAR(190) NOT NULL,
+  `contraseña` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
