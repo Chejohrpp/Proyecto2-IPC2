@@ -13,20 +13,20 @@ public class DiaLab {
     
     public static final String DIA_LAB_DB_NAME="dia_lab";
     public static final String DB_ID="id";
-    public static final String DB_DIA_SEMANA_ID="dia_semana_id";
+    public static final String DB_DIA_SEMANA="dia_semana";
     public static final String DB_LABORATORISTA_CODIGO="laboratorista_codigo";
     
     private int id;
-    private int semanaId;
+    private String diaSemana;
     private String laboratoristaCodigo;
     
     public DiaLab(){
         
     }
 
-    public DiaLab(int id, int semanaId, String laboratoristaCodigo) {
+    public DiaLab(int id, String diaSemana, String laboratoristaCodigo) {
         this.id = id;
-        this.semanaId = semanaId;
+        this.diaSemana = diaSemana;
         this.laboratoristaCodigo = laboratoristaCodigo;
     }
 
@@ -38,12 +38,12 @@ public class DiaLab {
         this.id = id;
     }
 
-    public int getSemanaId() {
-        return semanaId;
+    public String getDiaSemana() {
+        return diaSemana;
     }
 
-    public void setSemanaId(int semanaId) {
-        this.semanaId = semanaId;
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
     }
 
     public String getLaboratoristaCodigo() {

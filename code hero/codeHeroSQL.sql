@@ -144,16 +144,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `code_hero`.`dia_semana`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `code_hero`.`dia_semana` (
-  `id` INT NOT NULL,
-  `nombre` VARCHAR(60) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `code_hero`.`resultado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `code_hero`.`resultado` (
@@ -223,16 +213,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `code_hero`.`dia_lab` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `dia_semana_id` INT NOT NULL,
+  `dia_semana` VARCHAR(20) NOT NULL,
   `laboratorista_codigo` VARCHAR(100) NOT NULL,
   INDEX `fk_dia_semana_has_laboratorista_laboratorista1_idx` (`laboratorista_codigo` ASC) VISIBLE,
-  INDEX `fk_dia_semana_has_laboratorista_dia_semana1_idx` (`dia_semana_id` ASC) VISIBLE,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_dia_semana_has_laboratorista_dia_semana1`
-    FOREIGN KEY (`dia_semana_id`)
-    REFERENCES `code_hero`.`dia_semana` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_dia_semana_has_laboratorista_laboratorista1`
     FOREIGN KEY (`laboratorista_codigo`)
     REFERENCES `code_hero`.`laboratorista` (`codigo`)
