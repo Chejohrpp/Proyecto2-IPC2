@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`paciente` (
   `peso` INT NOT NULL,
   `sangre` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `contraseña` BLOB NOT NULL,
+  `password` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`medico` (
   `horario_inicio` TIME NOT NULL,
   `horario_final` TIME NOT NULL,
   `fecha_empezo` DATE NOT NULL,
-  `contraseña` BLOB NOT NULL,
+  `password` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`informe` (
   `descripcion` VARCHAR(900) NOT NULL,
   `hora` TIME NOT NULL,
   `fecha` DATE NOT NULL,
-  `costo` DOUBLE NOT NULL,
+  `costo` DOUBLE NULL,
   `paciente_codigo` INT NOT NULL,
   `medico_codigo` VARCHAR(60) NOT NULL,
   INDEX `fk_paciente_has_medico_medico2_idx` (`medico_codigo` ASC) VISIBLE,
@@ -138,8 +138,15 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`laboratorista` (
   `telefono` VARCHAR(12) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `fecha_empezo` DATE NOT NULL,
-  `contraseña` BLOB NOT NULL,
-  PRIMARY KEY (`codigo`))
+  `password` BLOB NOT NULL,
+  `examen_codigo` INT NOT NULL,
+  PRIMARY KEY (`codigo`),
+  INDEX `fk_laboratorista_examen1_idx` (`examen_codigo` ASC) VISIBLE,
+  CONSTRAINT `fk_laboratorista_examen1`
+    FOREIGN KEY (`examen_codigo`)
+    REFERENCES `code_hero`.`examen` (`codigo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -147,7 +154,7 @@ ENGINE = InnoDB;
 -- Table `code_hero`.`resultado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `code_hero`.`resultado` (
-  `codigo` INT NOT NULL,
+  `codigo` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
   `hora` TIME NOT NULL,
   `verificado` TINYINT NULL,
@@ -255,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`admin` (
   `codigo` VARCHAR(100) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `dpi` VARCHAR(16) NOT NULL,
-  `contraseña` BLOB NOT NULL,
+  `password` BLOB NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 

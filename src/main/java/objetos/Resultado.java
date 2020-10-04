@@ -5,6 +5,8 @@
  */
 package objetos;
 
+import java.io.InputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.websocket.Decoder.Binary;
@@ -13,7 +15,7 @@ import javax.websocket.Decoder.Binary;
  *
  * @author sergi
  */
-public class Resultado {
+public class Resultado implements Serializable{
     
     public static final String RESULTADO_DB_NAME="resultado";
     public static final String DB_CODIGO="codigo";
@@ -31,8 +33,8 @@ public class Resultado {
     private LocalDate fecha;
     private LocalTime hora;
     private boolean verificado;
-    private Binary docuemto;
-    private Binary ordeHecha;
+    private InputStream docuemto;
+    private InputStream ordeHecha;
     private int pacienteCodigo;
     private String medicoCodigo;
     private int examenCodigo;
@@ -42,7 +44,7 @@ public class Resultado {
         
     }
 
-    public Resultado(int codigo, LocalDate fecha, LocalTime hora, boolean verificado, Binary docuemto, Binary ordeHecha, int pacienteCodigo, String medicoCodigo, int examenCodigo, String laboratoristaCodigo) {
+    public Resultado(int codigo, LocalDate fecha, LocalTime hora, boolean verificado, InputStream docuemto, InputStream ordeHecha, int pacienteCodigo, String medicoCodigo, int examenCodigo, String laboratoristaCodigo) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.hora = hora;
@@ -53,8 +55,17 @@ public class Resultado {
         this.medicoCodigo = medicoCodigo;
         this.examenCodigo = examenCodigo;
         this.laboratoristaCodigo = laboratoristaCodigo;
-    }
+    }    
 
+    public Resultado(LocalDate fecha, LocalTime hora, boolean verificado, InputStream docuemto, int pacienteCodigo, int examenCodigo) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.verificado = verificado;
+        this.docuemto = docuemto;
+        this.pacienteCodigo = pacienteCodigo;
+        this.examenCodigo = examenCodigo;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
@@ -87,19 +98,19 @@ public class Resultado {
         this.verificado = verificado;
     }
 
-    public Binary getDocuemto() {
+    public InputStream getDocuemto() {
         return docuemto;
     }
 
-    public void setDocuemto(Binary docuemto) {
+    public void setDocuemto(InputStream docuemto) {
         this.docuemto = docuemto;
     }
 
-    public Binary getOrdeHecha() {
+    public InputStream getOrdeHecha() {
         return ordeHecha;
     }
 
-    public void setOrdeHecha(Binary ordeHecha) {
+    public void setOrdeHecha(InputStream ordeHecha) {
         this.ordeHecha = ordeHecha;
     }
 

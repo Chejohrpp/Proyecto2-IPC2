@@ -5,11 +5,13 @@
  */
 package objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class Especialidad {
+public class Especialidad implements Serializable {
     
     public static final String ESPECIALIDAD_DB_NAME="especialidad";
     public static final String DB_ID="id";
@@ -30,6 +32,11 @@ public class Especialidad {
         this.precio = precio;
     }
 
+    public Especialidad(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+    
     public int getId() {
         return id;
     }

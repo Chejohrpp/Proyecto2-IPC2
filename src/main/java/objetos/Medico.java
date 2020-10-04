@@ -26,7 +26,7 @@ public class Medico implements Serializable {
      public static final String DB_NAME_HORARIO_INICIO="horario_inicio";
      public static final String DB_NAME_HORARIO_FINAL="horario_final";
      public static final String DB_NAME_FECHA_EMPEZO="fecha_empezo";
-     public static final String DB_NAME_PASSWORD="contraseña";
+     public static final String DB_PASSWORD="password";
      
      private String codigo;
      private String nombre;

@@ -5,6 +5,7 @@
  */
 package objetos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,7 +13,7 @@ import java.time.LocalTime;
  *
  * @author sergi
  */
-public class Informe {
+public class Informe implements Serializable {
     public static final String INFORME_DB_NAME="informe";
     public static final String DB_CODIGO="codigo";
     public static final String DB_DESCRIPCION="descripcion";
@@ -33,7 +34,7 @@ public class Informe {
     public Informe(){
         
    }
-
+    //si no tiene costo colocamos 0
     public Informe(int coidigo, String descripcion, LocalTime hora, LocalDate fecha, double costo, int pacienteCodigo, String medicoCodigo) {
         this.coidigo = coidigo;
         this.descripcion = descripcion;
@@ -43,6 +44,16 @@ public class Informe {
         this.pacienteCodigo = pacienteCodigo;
         this.medicoCodigo = medicoCodigo;
     }
+
+    public Informe(String descripcion, LocalTime hora, LocalDate fecha, double costo, int pacienteCodigo, String medicoCodigo) {
+        this.descripcion = descripcion;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.costo = costo;
+        this.pacienteCodigo = pacienteCodigo;
+        this.medicoCodigo = medicoCodigo;
+    }
+    
 
     public int getCoidigo() {
         return coidigo;

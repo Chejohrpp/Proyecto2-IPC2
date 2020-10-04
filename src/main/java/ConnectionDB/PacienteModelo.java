@@ -83,8 +83,7 @@ public class PacienteModelo {
         if (paciente != null && paciente.getPassword().equals(pass)) {
             return paciente;
         }
-        return null;
-        
+        return null;        
     }
     
 }

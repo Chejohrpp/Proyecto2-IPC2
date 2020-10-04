@@ -5,11 +5,13 @@
  */
 package objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class DiaLab {
+public class DiaLab implements Serializable {
     
     public static final String DIA_LAB_DB_NAME="dia_lab";
     public static final String DB_ID="id";
@@ -29,6 +31,12 @@ public class DiaLab {
         this.diaSemana = diaSemana;
         this.laboratoristaCodigo = laboratoristaCodigo;
     }
+
+    public DiaLab(String diaSemana, String laboratoristaCodigo) {
+        this.diaSemana = diaSemana;
+        this.laboratoristaCodigo = laboratoristaCodigo;
+    }
+    
 
     public int getId() {
         return id;

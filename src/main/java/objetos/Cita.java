@@ -5,6 +5,7 @@
  */
 package objetos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,7 +13,7 @@ import java.time.LocalTime;
  *
  * @author sergi
  */
-public class Cita {
+public class Cita implements Serializable {
     
     public static final String CITA_DB_NAME="cita";
     public static final String DB_CODIGO="codigo";
@@ -38,6 +39,14 @@ public class Cita {
         this.pacienteCodigo = pacienteCodigo;
         this.medicoCodigo = medicoCodigo;
     }
+
+    public Cita(LocalDate fecha, LocalTime hora, int pacienteCodigo, String medicoCodigo) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.pacienteCodigo = pacienteCodigo;
+        this.medicoCodigo = medicoCodigo;
+    }
+    
 
     public int getCodigo() {
         return codigo;

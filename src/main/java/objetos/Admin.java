@@ -5,17 +5,19 @@
  */
 package objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class Admin {
+public class Admin implements Serializable{
     
     public static final String ADMIN_DB_NAME="admin";
     public static final String DB_CODIGO="codigo";
     public static final String DB_NOMBRE="nombre";
     public static final String DB_DPI="dpi";
-    public static final String DB_PASSWORD="contraseña";
+    public static final String DB_PASSWORD="password";
     public static final String LLAVE="flipRefrigerador";
     
     private String codigo;

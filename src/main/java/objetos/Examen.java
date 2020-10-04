@@ -5,11 +5,13 @@
  */
 package objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class Examen {
+public class Examen implements Serializable {
     
     public static final String EXAMEN_DB_NAME="examen";
     public static final String DB_CODIGO="codigo";
@@ -39,6 +41,14 @@ public class Examen {
         this.descripcion = descripcion;
     }
 
+    public Examen(String nombre, String tipo, boolean orden, double costo, String descripcion) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.orden = orden;
+        this.costo = costo;
+        this.descripcion = descripcion;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

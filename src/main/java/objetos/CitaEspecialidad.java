@@ -5,11 +5,13 @@
  */
 package objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergi
  */
-public class CitaEspecialidad {
+public class CitaEspecialidad implements Serializable {
     
     public static final String CITA_ESPECIALIDAD_DB_NAME="cita_especilidad";
     public static final String DB_ID="id";
@@ -29,6 +31,12 @@ public class CitaEspecialidad {
         this.citaCodigo = citaCodigo;
         this.especialidadId = especialidadId;
     }
+
+    public CitaEspecialidad(int citaCodigo, int especialidadId) {
+        this.citaCodigo = citaCodigo;
+        this.especialidadId = especialidadId;
+    }
+    
 
     public int getId() {
         return id;

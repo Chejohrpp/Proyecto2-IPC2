@@ -24,7 +24,7 @@ public class Paciente implements Serializable{
     public static final String DB_PESO="peso";
     public static final String DB_SANGRE="sangre";
     public static final String DB_EMAIL="email";
-    public static final String DB_PASSWORD="contraseña";
+    public static final String DB_PASSWORD="password";
     
     private int codigo;
     private String nombre;
