@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `code_hero`.`informe` (
   `codigo` INT NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(900) NOT NULL,
+  `descripcion` VARCHAR(2000) NOT NULL,
   `hora` TIME NOT NULL,
   `fecha` DATE NOT NULL,
   `costo` DOUBLE NULL,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `code_hero`.`examen` (
   `tipo` VARCHAR(10) NOT NULL,
   `orden` TINYINT NOT NULL,
   `costo` DOUBLE NOT NULL,
-  `descripcion` VARCHAR(900) NOT NULL,
+  `descripcion` VARCHAR(2000) NOT NULL,
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 

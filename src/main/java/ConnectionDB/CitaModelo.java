@@ -17,7 +17,7 @@ import objetos.Cita;
  */
 public class CitaModelo {
     
-    private static String ADD_CITA = "INSER INTO "+ Cita.CITA_DB_NAME+ " ( " +Cita.DB_CODIGO+","+Cita.DB_FECHA+","+Cita.DB_HORA+","+Cita.DB_MEDICO_CODIGO+","
+    private static String ADD_CITA = "INSERT INTO "+ Cita.CITA_DB_NAME+ " ( " +Cita.DB_CODIGO+","+Cita.DB_FECHA+","+Cita.DB_HORA+","+Cita.DB_MEDICO_CODIGO+","
             +Cita.DB_PACIENTE_CODIGO+") VALUES(?,?,?,?,?)";
     
     private Connection connection = ConnectionDB.getInstance();
@@ -26,10 +26,10 @@ public class CitaModelo {
         PreparedStatement preSt = connection.prepareStatement(ADD_CITA);
 
         preSt.setInt(1, cita.getCodigo());
-        preSt.setString(2, cita.getFecha().toString());
-        preSt.setString(3, cita.getHora().toString());
+        preSt.setString(2, cita.getFecha());
+        preSt.setString(3, cita.getHora());
         preSt.setString(4, cita.getMedicoCodigo()); 
-        preSt.setInt(4, cita.getPacienteCodigo()); 
+        preSt.setInt(5, cita.getPacienteCodigo()); 
         
         preSt.executeUpdate();        
     }

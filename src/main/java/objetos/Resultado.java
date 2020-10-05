@@ -30,8 +30,8 @@ public class Resultado implements Serializable{
     public static final String DB_LABORATORISTA_CODIGO="laboratorista_codigo";
     
     private int codigo;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String fecha;
+    private String hora;
     private boolean verificado;
     private InputStream docuemto;
     private InputStream ordeHecha;
@@ -40,11 +40,14 @@ public class Resultado implements Serializable{
     private int examenCodigo;
     private String laboratoristaCodigo;
     
+    private int tamañoOrden;
+    private int tamañoInforme;
+    
     public Resultado(){
         
     }
 
-    public Resultado(int codigo, LocalDate fecha, LocalTime hora, boolean verificado, InputStream docuemto, InputStream ordeHecha, int pacienteCodigo, String medicoCodigo, int examenCodigo, String laboratoristaCodigo) {
+    public Resultado(int codigo, String fecha, String hora, boolean verificado, InputStream docuemto, InputStream ordeHecha, int pacienteCodigo, String medicoCodigo, int examenCodigo, String laboratoristaCodigo) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.hora = hora;
@@ -57,13 +60,29 @@ public class Resultado implements Serializable{
         this.laboratoristaCodigo = laboratoristaCodigo;
     }    
 
-    public Resultado(LocalDate fecha, LocalTime hora, boolean verificado, InputStream docuemto, int pacienteCodigo, int examenCodigo) {
+    public Resultado(String fecha, String hora, boolean verificado, InputStream docuemto, int pacienteCodigo, int examenCodigo) {
         this.fecha = fecha;
         this.hora = hora;
         this.verificado = verificado;
         this.docuemto = docuemto;
         this.pacienteCodigo = pacienteCodigo;
         this.examenCodigo = examenCodigo;
+    }
+
+    public int getTamañoOrden() {
+        return tamañoOrden;
+    }
+
+    public void setTamañoOrden(int tamañoOrden) {
+        this.tamañoOrden = tamañoOrden;
+    }
+
+    public int getTamañoInforme() {
+        return tamañoInforme;
+    }
+
+    public void setTamañoInforme(int tamañoInforme) {
+        this.tamañoInforme = tamañoInforme;
     }
     
     public int getCodigo() {
@@ -74,19 +93,19 @@ public class Resultado implements Serializable{
         this.codigo = codigo;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

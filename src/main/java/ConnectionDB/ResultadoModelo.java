@@ -28,8 +28,8 @@ public class ResultadoModelo {
         PreparedStatement preSt = connection.prepareStatement(ADD_RESULTADO);
         
         preSt.setInt(1, resultado.getCodigo());
-        preSt.setString(2, resultado.getFecha().toString());
-        preSt.setString(3, resultado.getHora().toString());
+        preSt.setString(2, resultado.getFecha());
+        preSt.setString(3, resultado.getHora());
         preSt.setBoolean(4, resultado.isVerificado());
         preSt.setBinaryStream(5, resultado.getDocuemto());
         preSt.setBinaryStream(6, resultado.getOrdeHecha());

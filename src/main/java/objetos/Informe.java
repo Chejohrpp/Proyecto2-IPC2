@@ -25,8 +25,8 @@ public class Informe implements Serializable {
     
     private int coidigo;
     private String descripcion;
-    private LocalTime hora;
-    private LocalDate fecha;
+    private String hora;
+    private String fecha;
     private double costo;
     private int pacienteCodigo;
     private String medicoCodigo;
@@ -35,7 +35,7 @@ public class Informe implements Serializable {
         
    }
     //si no tiene costo colocamos 0
-    public Informe(int coidigo, String descripcion, LocalTime hora, LocalDate fecha, double costo, int pacienteCodigo, String medicoCodigo) {
+    public Informe(int coidigo, String descripcion, String hora, String fecha, double costo, int pacienteCodigo, String medicoCodigo) {
         this.coidigo = coidigo;
         this.descripcion = descripcion;
         this.hora = hora;
@@ -45,7 +45,7 @@ public class Informe implements Serializable {
         this.medicoCodigo = medicoCodigo;
     }
 
-    public Informe(String descripcion, LocalTime hora, LocalDate fecha, double costo, int pacienteCodigo, String medicoCodigo) {
+    public Informe(String descripcion, String hora, String fecha, double costo, int pacienteCodigo, String medicoCodigo) {
         this.descripcion = descripcion;
         this.hora = hora;
         this.fecha = fecha;
@@ -71,19 +71,19 @@ public class Informe implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

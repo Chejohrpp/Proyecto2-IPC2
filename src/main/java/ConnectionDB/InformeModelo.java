@@ -26,8 +26,8 @@ public class InformeModelo {
 
         preSt.setInt(1, informe.getCoidigo());
         preSt.setString(2, informe.getDescripcion());
-        preSt.setString(3, informe.getHora().toString());
-        preSt.setString(4, informe.getHora().toString());        
+        preSt.setString(3, informe.getHora());
+        preSt.setString(4, informe.getFecha());        
         preSt.setDouble(5, informe.getCosto());        
         preSt.setInt(6, informe.getPacienteCodigo());        
         preSt.setString(7, informe.getMedicoCodigo());

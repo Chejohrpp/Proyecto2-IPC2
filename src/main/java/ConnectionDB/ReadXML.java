@@ -11,6 +11,7 @@ import static javax.swing.JFileChooser.APPROVE_OPTION;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.io.File;
+import java.io.FileInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import objetos.*;
@@ -300,6 +301,23 @@ public class ReadXML {
         for (int i = 0; i < listaReportes.getLength(); i++) {
             try{
                 
+                Node nodo = listaReportes.item(i);
+
+                if(nodo.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) nodo;
+
+                    String codigo = element.getElementsByTagName("CODIGO").item(0).getTextContent();
+                    String paciente = element.getElementsByTagName("PACIENTE").item(0).getTextContent();          
+                    String medico = element.getElementsByTagName("MEDICO").item(0).getTextContent();             
+                    String descripcion = element.getElementsByTagName("INFORME").item(0).getTextContent();
+                    String fecha = element.getElementsByTagName("FECHA").item(0).getTextContent();
+                    String hora = element.getElementsByTagName("HORA").item(0).getTextContent();
+                    
+                    //los llevamos a la DB
+                    Informe informe = new Informe(Integer.valueOf(codigo),descripcion,hora,fecha,0,Integer.valueOf(paciente),medico);
+                    informeModelo.addInforme(informe);
+                    
+                }
                 
                 
             }catch(Exception e){
@@ -311,8 +329,56 @@ public class ReadXML {
 
     private void resultados(NodeList listaResultados) {
         ResultadoModelo resultadoModelo = new ResultadoModelo();
+        
         for (int i = 0; i < listaResultados.getLength(); i++) {
             try{
+                
+                Node nodo = listaResultados.item(i);
+
+                if(nodo.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) nodo;
+
+                    String codigo = element.getElementsByTagName("CODIGO").item(0).getTextContent();
+                    String paciente = element.getElementsByTagName("PACIENTE").item(0).getTextContent();
+                    
+                    String medico = null;
+                    try{
+                        medico = element.getElementsByTagName("MEDICO").item(0).getTextContent(); 
+                    }catch(Exception e){
+                        medico = null;
+                    }
+                    
+                    String laboratorista = element.getElementsByTagName("LABORATORISTA").item(0).getTextContent();
+                    String ordenPath = element.getElementsByTagName("ORDEN").item(0).getTextContent();
+                    String informePath = element.getElementsByTagName("INFORME").item(0).getTextContent();
+                    String fecha = element.getElementsByTagName("FECHA").item(0).getTextContent();
+                    String hora = element.getElementsByTagName("HORA").item(0).getTextContent();
+                    String examen = element.getElementsByTagName("EXAMEN").item(0).getTextContent();                    
+                    boolean verificado=true;
+                    
+                    FileInputStream ordenFile = null;
+                    FileInputStream informeFile = null;
+                   
+                    //cambiamos el ordenPath
+                    try{
+                        File fileOrden = new File(ordenPath);
+                        ordenFile = new FileInputStream(fileOrden);                       
+                    }catch(Exception e){                    
+                        
+                    }
+                    //cambiamos el informePath
+                    try{
+                        File fileInforme = new File(informePath);
+                        informeFile = new FileInputStream(fileInforme);                       
+                    }catch(Exception e){                    
+                        
+                    }
+                    
+                    //los llevamos a la DB
+                    Resultado resultado = new Resultado(Integer.valueOf(codigo),fecha,hora,verificado,informeFile,ordenFile,Integer.valueOf(paciente),medico,Integer.valueOf(examen),laboratorista);
+                    resultadoModelo.addResultado(resultado);
+                    
+                }
                 
                 
                 
@@ -325,9 +391,26 @@ public class ReadXML {
 
     private void citas(NodeList listaCitas) {
         CitaModelo citaModelo = new CitaModelo();
+        
         for (int i = 0; i < listaCitas.getLength(); i++) {
             try{
                 
+                Node nodo = listaCitas.item(i);
+
+                if(nodo.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) nodo;
+
+                    String codigo = element.getElementsByTagName("CODIGO").item(0).getTextContent();
+                    String paciente = element.getElementsByTagName("PACIENTE").item(0).getTextContent();          
+                    String medico = element.getElementsByTagName("MEDICO").item(0).getTextContent();
+                    String fecha = element.getElementsByTagName("FECHA").item(0).getTextContent();
+                    String hora = element.getElementsByTagName("HORA").item(0).getTextContent();
+                    
+                    //los llevamos a la DB
+                    Cita cita = new Cita(Integer.valueOf(codigo),fecha,hora,Integer.valueOf(paciente),medico);
+                    citaModelo.addCita(cita);
+                    
+                }
                 
                 
             }catch(Exception e){

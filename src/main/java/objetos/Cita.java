@@ -23,8 +23,8 @@ public class Cita implements Serializable {
     public static final String DB_MEDICO_CODIGO="medico_codigo";
     
     private int codigo;
-    private LocalDate fecha;
-    private LocalTime hora;
+    private String fecha;
+    private String hora;
     private int pacienteCodigo;
     private String medicoCodigo;
     
@@ -32,7 +32,7 @@ public class Cita implements Serializable {
         
     }
 
-    public Cita(int codigo, LocalDate fecha, LocalTime hora, int pacienteCodigo, String medicoCodigo) {
+    public Cita(int codigo, String fecha, String hora, int pacienteCodigo, String medicoCodigo) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.hora = hora;
@@ -40,7 +40,7 @@ public class Cita implements Serializable {
         this.medicoCodigo = medicoCodigo;
     }
 
-    public Cita(LocalDate fecha, LocalTime hora, int pacienteCodigo, String medicoCodigo) {
+    public Cita(String fecha, String hora, int pacienteCodigo, String medicoCodigo) {
         this.fecha = fecha;
         this.hora = hora;
         this.pacienteCodigo = pacienteCodigo;
@@ -56,19 +56,19 @@ public class Cita implements Serializable {
         this.codigo = codigo;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
