@@ -20,6 +20,8 @@ public class MedicoEspecialidadModelo {
     private static String ADD_MEDICO_ESPECIALIDAD = "INSERT INTO " + MedicoEspecialidad.MEDICO_ESPECIALIDAD_DB_NAME + " ( " +MedicoEspecialidad.DB_ESPECIALIDAD_ID+","
             +MedicoEspecialidad.DB_MEDICO_CODIGO+" ) VALUES(?,?)";
     
+    
+    
     private static Connection connection =  ConnectionDB.getInstance();
     
     public void addMedicoEspecialidad(MedicoEspecialidad medicoEspecialidad) throws SQLException{
@@ -29,5 +31,7 @@ public class MedicoEspecialidadModelo {
         preSt.setString(2, medicoEspecialidad.getMedicoCodigo());
         preSt.executeUpdate();        
     }
+    
+    
     
 }

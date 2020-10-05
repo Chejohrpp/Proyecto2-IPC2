@@ -19,7 +19,7 @@ public class Medico implements Serializable {
      public static final String MEDICO_DB_NAME="medico";
      public static final String DB_CODIGO="codigo";
      public static final String DB_NOMBRE="nombre";
-     public static final String DB_COLEGIADO="coleagido";
+     public static final String DB_COLEGIADO="colegiado";
      public static final String DB_DPI="dpi";
      public static final String DB_TELEFONO="telefono";
      public static final String DB_EMAIL="email";
@@ -34,16 +34,16 @@ public class Medico implements Serializable {
      private String dpi;
      private String telefono;
      private String email;
-     private LocalTime horarioInicio;
-     private LocalTime horarioFinal;
-     private LocalDate fechaEmpezo;
+     private String horarioInicio;
+     private String horarioFinal;
+     private String fechaEmpezo;
      private String password;
      
      public Medico(){
          
      }
 
-    public Medico(String codigo, String nombre, String colegiado, String dpi, String telefono, String email, LocalTime horarioInicio, LocalTime horarioFinal, LocalDate fechaEmpezo, String password) {
+    public Medico(String codigo, String nombre, String colegiado, String dpi, String telefono, String email, String horarioInicio, String horarioFinal, String fechaEmpezo, String password) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.colegiado = colegiado;
@@ -104,27 +104,27 @@ public class Medico implements Serializable {
         this.email = email;
     }
 
-    public LocalTime getHorarioInicio() {
+    public String getHorarioInicio() {
         return horarioInicio;
     }
 
-    public void setHorarioInicio(LocalTime horarioInicio) {
+    public void setHorarioInicio(String horarioInicio) {
         this.horarioInicio = horarioInicio;
     }
 
-    public LocalTime getHorarioFinal() {
+    public String getHorarioFinal() {
         return horarioFinal;
     }
 
-    public void setHorarioFinal(LocalTime horarioFinal) {
+    public void setHorarioFinal(String horarioFinal) {
         this.horarioFinal = horarioFinal;
     }
 
-    public LocalDate getFechaEmpezo() {
+    public String getFechaEmpezo() {
         return fechaEmpezo;
     }
 
-    public void setFechaEmpezo(LocalDate fechaEmpezo) {
+    public void setFechaEmpezo(String fechaEmpezo) {
         this.fechaEmpezo = fechaEmpezo;
     }
 

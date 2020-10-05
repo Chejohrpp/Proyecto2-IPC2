@@ -4,10 +4,10 @@
     Author     : sergi
 --%>
 
+<%@page import="ConnectionDB.ReadXML"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page import="ConnectionDB.ReadXML" %>
+<%@page import="ConnectionDB.AdminModelo" %>
 <%@page import="ConnectionDB.ConnectionDB" %>
 <!DOCTYPE html>
 <html>
@@ -18,12 +18,28 @@
     </head>
     
     <body>
+        <% AdminModelo adminModelo = new AdminModelo(); 
+         if (adminModelo.cantAdmins() == 0){ %>
+        
         <h1>La base de datos esta vacia</h1>
         <div class="datos">
-            <% ReadXML read = new ReadXML(); %>
-            <form action="<% read.buscarDato();%>">
+            <% ReadXML readXML = new ReadXML(); %>
+            <form action="<% readXML.buscarDato();%>">
                 <input type="submit" value="Buscar archivo XML">                
-            </form>            
-        </div>
+            </form>        
+        </div>        
+        
+        <% } else{ %>
+        
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+            if (session.getAttribute("id") == null) {
+                response.sendRedirect("login");
+            }           
+        %>
+        
+        <% } %>
+        
     </body>
 </html>

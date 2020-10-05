@@ -31,9 +31,9 @@ public class MedicoModelo {
         preSt.setString(4, medico.getDpi());
         preSt.setString(5, medico.getTelefono());        
         preSt.setString(6, medico.getEmail());        
-        preSt.setString(7, medico.getHorarioInicio().toString());        
-        preSt.setString(8, medico.getHorarioFinal().toString());        
-        preSt.setString(9, medico.getFechaEmpezo().toString());        
+        preSt.setString(7, medico.getHorarioInicio());        
+        preSt.setString(8, medico.getHorarioFinal());        
+        preSt.setString(9, medico.getFechaEmpezo());        
         preSt.setString(10, medico.getPassword());        
         preSt.setString(11, Admin.LLAVE);
         preSt.executeUpdate();        

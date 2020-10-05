@@ -17,7 +17,7 @@ import objetos.DiaLab;
  */
 public class DiaLabModelo {
     
-    private static String ADD_DIA_LAB = "INSERT INRO "+DiaLab.DIA_LAB_DB_NAME+" ( " +DiaLab.DB_DIA_SEMANA+","+DiaLab.DB_LABORATORISTA_CODIGO+") VALUES (?,?)";
+    private static String ADD_DIA_LAB = "INSERT INTO "+DiaLab.DIA_LAB_DB_NAME+" ( " +DiaLab.DB_DIA_SEMANA+","+DiaLab.DB_LABORATORISTA_CODIGO+") VALUES (?,?)";
     
     private static Connection connection = ConnectionDB.getInstance();
     

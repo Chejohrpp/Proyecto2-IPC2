@@ -22,7 +22,7 @@ public class Laboratorista implements Serializable {
     public static final String DB_TELEFONO="telefono";
     public static final String DB_EMAIL="email";
     public static final String DB_FECHA_EMPEZO="fecha_empezo";
-    public static final String DB_EXAMEN="examen";
+    public static final String DB_EXAMEN="examen_codigo";
     public static final String DB_PASSWORD="password";
     
     
@@ -32,7 +32,7 @@ public class Laboratorista implements Serializable {
     private String dpi;
     private String telefono;
     private String email;
-    private LocalDate fechaEmpezo;
+    private String fechaEmpezo;
     private int examenCodigo;
     private String password;
     
@@ -40,7 +40,7 @@ public class Laboratorista implements Serializable {
         
     }
 
-    public Laboratorista(String codigo, String nombre, String numMinisterio, String dpi, String telefono, String email, LocalDate fechaEmpezo, int examenCodigo, String password) {
+    public Laboratorista(String codigo, String nombre, String numMinisterio, String dpi, String telefono, String email, String fechaEmpezo, int examenCodigo, String password) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.numMinisterio = numMinisterio;
@@ -102,11 +102,11 @@ public class Laboratorista implements Serializable {
         this.email = email;
     }
 
-    public LocalDate getFechaEmpezo() {
+    public String getFechaEmpezo() {
         return fechaEmpezo;
     }
 
-    public void setFechaEmpezo(LocalDate fechaEmpezo) {
+    public void setFechaEmpezo(String fechaEmpezo) {
         this.fechaEmpezo = fechaEmpezo;
     }
 

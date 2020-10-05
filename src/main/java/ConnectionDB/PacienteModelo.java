@@ -27,13 +27,17 @@ public class PacienteModelo {
     
     private static String PACIENTES = "SELECT "+Paciente.DB_CODIGO+","+ ATRIBUTOS_PACIENTE +",cast(aes_decrypt("+Paciente.DB_PASSWORD +",?) as char) "+Paciente.DB_PASSWORD+
             " FROM " + Paciente.PACIENTE_DB_NAME;
+    
     private static String BUSCAR_PACIENTE = PACIENTES + " WHERE "+Paciente.DB_CODIGO+" = ? LIMIT 1" ;
+    
+    private static String ADD_PACIENTE = "INSERT INTO " + Paciente.PACIENTE_DB_NAME+" ( " +Paciente.DB_CODIGO+","+ATRIBUTOS_PACIENTE+"," +Paciente.DB_PASSWORD+ " ) VALUES(?,?,?,?,?,?,?,?,?,AES_ENCRYPT(?,?) )";
+    
     
     private static Connection connection = ConnectionDB.getInstance();
     
     
     public long addPacienteSinCodigo(Paciente paciente) throws SQLException{
-         PreparedStatement preSt = connection.prepareStatement(ADD_PACIENTE_SIN_CODIGO, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement preSt = connection.prepareStatement(ADD_PACIENTE_SIN_CODIGO, Statement.RETURN_GENERATED_KEYS);
 
         preSt.setString(1, paciente.getNombre());
         preSt.setString(2, paciente.getGenero());
@@ -84,6 +88,24 @@ public class PacienteModelo {
             return paciente;
         }
         return null;        
+    }
+    public void addPaciente(Paciente paciente) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(ADD_PACIENTE);
+        
+        preSt.setInt(1, paciente.getCodigo());
+        preSt.setString(2, paciente.getNombre());
+        preSt.setString(3, paciente.getGenero());
+        preSt.setString(4, paciente.getFechaNacimiento());
+        preSt.setString(5, paciente.getDpi());
+        preSt.setString(6, paciente.getTelefono());
+        preSt.setInt(7, paciente.getPeso());
+        preSt.setString(8, paciente.getSangre());
+        preSt.setString(9, paciente.getEmail());        
+        preSt.setString(10, paciente.getPassword());
+        preSt.setString(11, Admin.LLAVE);
+
+        preSt.executeUpdate();        
+     
     }
     
 }
