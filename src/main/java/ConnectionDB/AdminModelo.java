@@ -22,6 +22,11 @@ public class AdminModelo {
     
     private static String CANTIDAD_ADMINS = "SELECT COUNT(*) cantidad FROM " +Admin.ADMIN_DB_NAME+ " LIMIT 1";
     
+    private static String ADMIN = "SELECT " + Admin.DB_CODIGO+","+Admin.DB_NOMBRE+","+Admin.DB_DPI +",cast(aes_decrypt("+ Admin.DB_PASSWORD +",?) as char) "+Admin.DB_PASSWORD+
+            " FROM " + Admin.ADMIN_DB_NAME;
+    
+    private static String BUSCAR_ADMIN = ADMIN + " WHERE "+Admin.DB_CODIGO+" = ? LIMIT 1";
+    
     private static Connection connection = ConnectionDB.getInstance();
 
     public AdminModelo() {
@@ -48,5 +53,31 @@ public class AdminModelo {
             cantAdmins = result.getInt(1);
         }        
         return cantAdmins;
+    }
+    public Admin obtenerAdmin(String codigo)throws SQLException{        
+        PreparedStatement preSt = connection.prepareStatement(BUSCAR_ADMIN);
+        
+        preSt.setString(1, Admin.LLAVE);
+        preSt.setString(2, codigo);
+        
+        ResultSet result = preSt.executeQuery();
+        Admin admin = null;
+        while(result.next()){
+            admin = new Admin(
+                    result.getString(Admin.DB_CODIGO),
+                    result.getString(Admin.DB_NOMBRE),
+                    result.getString(Admin.DB_DPI),
+                    result.getString(Admin.DB_PASSWORD)            
+            );
+        }
+        return admin;
+        
+    }
+    public Admin verificarLogin(String id,String pass)throws SQLException{
+        Admin admin = obtenerAdmin(id);
+        if (admin!=null && pass.equals(admin.getPassword())) {
+            return admin;
+        }
+        return null;       
     }
 }
