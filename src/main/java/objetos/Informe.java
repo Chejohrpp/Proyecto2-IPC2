@@ -31,6 +31,10 @@ public class Informe implements Serializable {
     private int pacienteCodigo;
     private String medicoCodigo;
     
+    //para consultas
+    private String nombreMedico;
+    private String nombrePaciente;
+    
     public Informe(){
         
    }
@@ -53,8 +57,31 @@ public class Informe implements Serializable {
         this.pacienteCodigo = pacienteCodigo;
         this.medicoCodigo = medicoCodigo;
     }
-    
 
+    public Informe(int coidigo, String hora, String fecha, String nombreMedico) {
+        this.coidigo = coidigo;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.nombreMedico = nombreMedico;
+    }
+    
+    public String getNombreMedico() {
+        return nombreMedico;
+    }
+
+    public void setNombreMedico(String nombreMedico) {
+        this.nombreMedico = nombreMedico;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+    
+    
     public int getCoidigo() {
         return coidigo;
     }

@@ -12,10 +12,10 @@
     <body>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-
             if (session.getAttribute("id") == null) {
                 response.sendRedirect("login");
-            }else{            
+            }else{
+             String id = (String)session.getAttribute("id");
         %>
         
         <%--cabecera --%>
@@ -48,19 +48,19 @@
         <%--Para el paciente --%>
          <% if (tipo.equalsIgnoreCase("paciente")){%>
         <div class="paciente">
-            <form action="paciente/buscarMedico.jsp">
+            <form action="controladorMedico" method="GET">
                 <input type="submit" value="agendar una cita">
             </form>
-            <form action="paciente/historial.jsp">
+            <form action="controladorHistorial" method="GET">                
                 <input type="submit" value="Historial medico">
             </form>
-            <form action="paciente/buscarExamen.jsp">
+            <form action="controladorExamen" method="GET">
                 <input type="submit" value="agendar un examen medico">
             </form>
-            <form action="paciente/citasMedico.jsp">
+            <form action="controladorCitas" method="GET">
                 <input type="submit" value="ver citas medicas">
             </form> 
-            <form action="paciente/citasExamen.jsp">
+            <form action="ControladorCitasExamen">
                 <input type="submit" value="ver citas de examenes">
             </form> 
             <form action="paciente/reportesPaciente.jsp">

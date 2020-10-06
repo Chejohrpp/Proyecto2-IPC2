@@ -10,8 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 import objetos.Admin;
+import objetos.Examen;
+import objetos.Informe;
+import objetos.Medico;
 import objetos.Paciente;
+import objetos.Resultado;
 
 /**
  *
@@ -32,6 +38,13 @@ public class PacienteModelo {
     
     private static String ADD_PACIENTE = "INSERT INTO " + Paciente.PACIENTE_DB_NAME+" ( " +Paciente.DB_CODIGO+","+ATRIBUTOS_PACIENTE+"," +Paciente.DB_PASSWORD+ " ) VALUES(?,?,?,?,?,?,?,?,?,AES_ENCRYPT(?,?) )";
     
+    //QUERYS usando mas de una tabla
+    
+    private static String INFORMES = "SELECT i."+Informe.DB_HORA+",i."+Informe.DB_FECHA+",i."+Informe.DB_CODIGO+",m."+Medico.DB_NOMBRE+"  FROM "+Informe.INFORME_DB_NAME+" i, "
+            +Medico.MEDICO_DB_NAME+"  m WHERE i."+Informe.DB_PACIENTE_CODIGO+"=? AND m."+Medico.DB_CODIGO+"=i."+Informe.DB_MEDICO_CODIGO+" ORDER BY i."+Informe.DB_FECHA+" DESC";
+    
+    private static String RESULTADOS = "SELECT r."+Resultado.DB_FECHA+",r."+Resultado.DB_HORA+",r."+Resultado.DB_CODIGO+",e."+Examen.DB_NOMBRE+" FROM "+Resultado.RESULTADO_DB_NAME+"  r, "+Examen.EXAMEN_DB_NAME+"  e "
+            + "WHERE r."+Resultado.DB_PACIENTE_CODIGO+"=? AND r."+Resultado.DB_EXAMEN_CODIGO+" =e."+Examen.DB_CODIGO+"  AND r."+Resultado.DB_VERIFICADO+"=1 ORDER BY r."+Resultado.DB_FECHA+"  DESC";
     
     private static Connection connection = ConnectionDB.getInstance();
     
@@ -108,4 +121,39 @@ public class PacienteModelo {
      
     }
     
+    public List<Informe> todosInformes(int codigo) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(INFORMES);
+        preSt.setInt(1, codigo);
+        List<Informe> informes = new LinkedList<>();
+         ResultSet result = preSt.executeQuery();
+        while(result.next()){
+            informes.add(new Informe(
+                    result.getInt(Informe.DB_CODIGO),
+                    result.getString(Informe.DB_HORA),
+                    result.getString(Informe.DB_FECHA),
+                    result.getString(Medico.DB_NOMBRE)           
+            ));
+        }
+        
+        return informes;
+        
+    }
+    
+    public List<Resultado> todosExamenes(int codigo) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(RESULTADOS);
+        preSt.setInt(1, codigo);
+        List<Resultado> resultados = new LinkedList<>();
+         ResultSet result = preSt.executeQuery();
+        while(result.next()){
+            resultados.add(new Resultado(
+                    result.getInt(Resultado.DB_CODIGO),
+                    result.getString(Resultado.DB_FECHA),
+                    result.getString(Resultado.DB_HORA),
+                    result.getString(Examen.DB_NOMBRE)
+            ));
+        }
+        
+        
+        return resultados;
+    }
 }

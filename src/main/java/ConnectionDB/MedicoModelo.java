@@ -5,10 +5,12 @@
  */
 package ConnectionDB;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import objetos.Admin;
 import objetos.Medico;
 
@@ -26,6 +28,7 @@ public class MedicoModelo {
     private static String MEDICO ="SELECT " +ATRIBUTOS+",cast(aes_decrypt("+ Medico.DB_PASSWORD +",?) as char) "+Medico.DB_PASSWORD+ " FROM " + Medico.MEDICO_DB_NAME;
     
     private static String BUSCAR_MEDICO = MEDICO +" WHERE " +Medico.DB_CODIGO+ " =? LIMIT 1";
+    private static String BUSCAR_NOMBRE_MEDICOS = MEDICO + " WHERE " + Medico.DB_NOMBRE + " LIKE ?";
     
     private static Connection connection = ConnectionDB.getInstance();
     
@@ -44,6 +47,49 @@ public class MedicoModelo {
         preSt.setString(10, medico.getPassword());        
         preSt.setString(11, Admin.LLAVE);
         preSt.executeUpdate();        
+    }
+    
+    private void llenarListMedicos(PreparedStatement preSt,List<Medico> medicos) throws SQLException{        
+        ResultSet result = preSt.executeQuery();
+        
+        while(result.next()){
+            medicos.add(new Medico(
+                    result.getString(Medico.DB_CODIGO),
+                    result.getString(Medico.DB_NOMBRE),
+                    result.getString(Medico.DB_COLEGIADO),
+                    result.getString(Medico.DB_DPI),          
+                    result.getString(Medico.DB_TELEFONO),          
+                    result.getString(Medico.DB_EMAIL),            
+                    result.getString(Medico.DB_NAME_HORARIO_INICIO),            
+                    result.getString(Medico.DB_NAME_HORARIO_FINAL),            
+                    result.getString(Medico.DB_NAME_FECHA_EMPEZO), 
+                    result.getString(Medico.DB_PASSWORD)       
+            ));
+        }
+    }
+    
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+    public List<Medico> todosMedicos() throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(MEDICO);  
+        preSt.setString(1, Admin.LLAVE);
+        List<Medico> medicos = new LinkedList<>();
+        llenarListMedicos(preSt,medicos);       
+        return medicos;
+        
+    }
+    public List<Medico> todosMedicosNombre(String nombre) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(BUSCAR_NOMBRE_MEDICOS);
+        preSt.setString(1, Admin.LLAVE);
+        preSt.setString(2, "%"+nombre+"%");
+        
+        List<Medico> medicos = new LinkedList<>();
+        llenarListMedicos(preSt,medicos);       
+        return medicos;
+        
     }
     
     public Medico obtenerMedico(String codigo)throws SQLException{        

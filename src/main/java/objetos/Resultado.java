@@ -43,6 +43,12 @@ public class Resultado implements Serializable{
     private int tamañoOrden;
     private int tamañoInforme;
     
+    //atributos para consultas
+    private String nombreExamen;
+    private String nombreLaboratorista;
+    private String nombrePaciente;
+    private String nombreMedico;
+    
     public Resultado(){
         
     }
@@ -68,7 +74,47 @@ public class Resultado implements Serializable{
         this.pacienteCodigo = pacienteCodigo;
         this.examenCodigo = examenCodigo;
     }
+    //es para la consulta de todos los examenes hechos por un usuario
+    public Resultado(int codigo, String fecha, String hora, String nombreExamen) {
+        this.codigo = codigo;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.nombreExamen = nombreExamen;
+    }
+    
+    public String getNombreExamen() {
+        return nombreExamen;
+    }
 
+    public void setNombreExamen(String nombreExamen) {
+        this.nombreExamen = nombreExamen;
+    }
+
+    public String getNombreLaboratorista() {
+        return nombreLaboratorista;
+    }
+
+    public void setNombreLaboratorista(String nombreLaboratorista) {
+        this.nombreLaboratorista = nombreLaboratorista;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getNombreMedico() {
+        return nombreMedico;
+    }
+
+    public void setNombreMedico(String nombreMedico) {
+        this.nombreMedico = nombreMedico;
+    }
+
+    
     public int getTamañoOrden() {
         return tamañoOrden;
     }

@@ -12,7 +12,23 @@ body{
     box-sizing: border-box;
     margin-left: 37%;
     padding: 5px 20px;
-    background: white;
+    
+}
+
+.informacion{
+    width: 1100px;
+    box-sizing: border-box;
+    margin-left: 20%;
+    padding: 5px 20px;
+    text-align: center;
+    
+}
+.informacionPeque{
+    width: 600px;
+    box-sizing: border-box;
+    margin-left: 35%;
+    padding: 20px 20px;
+    text-align: center;
 }
 .cabecera{
     width: 125px;
@@ -35,11 +51,19 @@ h2{
 h3{
     font-size: 15px;
 }
-.datos h2{
+.datos h2, .datos h3{
     text-align: center;
     letter-spacing: 1px;
     font-family: "bill";
     font-size: 45px;
+    font-weight: 200;
+}
+.datos h3{
+    font-size: 30px;
+}
+.informacionPeque h2{
+    text-align: center;
+    letter-spacing: 1px;
     font-weight: 200;
 }
 label{
@@ -80,4 +104,7 @@ input[type="submit"]{
 a{
     text-decoration: none;
     color:black;
+}
+.informacion a{
+    color: #0095f6;
 }
