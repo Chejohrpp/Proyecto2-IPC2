@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import objetos.Admin;
 import objetos.Examen;
 
@@ -18,10 +20,16 @@ import objetos.Examen;
  */
 public class ExamenModelo {
     
-    private static String ADD_EXAMEN =  "INSERT INTO "+ Examen.EXAMEN_DB_NAME+" ( "+ Examen.DB_CODIGO +","+ Examen.DB_NOMBRE +","+ Examen.DB_TIPO +","
-            + Examen.DB_ORDEN +","+ Examen.DB_COSTO +","+ Examen.DB_DESCRIPCION +") VALUES(?,?,?,?,?,?)";
+    private static String ATRIBUTOS = Examen.DB_CODIGO +","+ Examen.DB_NOMBRE +","+ Examen.DB_TIPO +","
+            + Examen.DB_ORDEN +","+ Examen.DB_COSTO +","+ Examen.DB_DESCRIPCION;
+    
+    private static String ADD_EXAMEN =  "INSERT INTO "+ Examen.EXAMEN_DB_NAME+" ( "+ ATRIBUTOS +") VALUES(?,?,?,?,?,?)";
     
     private static String BUSCAR_ID_EXAMEN= "SELECT " + Examen.DB_CODIGO +" FROM " + Examen.EXAMEN_DB_NAME + " WHERE " +Examen.DB_NOMBRE +" = ? LIMIT 1";
+    
+    private static String EXAMEN = "SELECT " +ATRIBUTOS+ " FROM " +Examen.EXAMEN_DB_NAME;
+    
+    private static String BUSCAR_EXAMENES_NOMBRE = EXAMEN + " WHERE " +Examen.DB_NOMBRE +" LIKE ? ";
             
     private Connection connection = ConnectionDB.getInstance();
  
@@ -47,6 +55,38 @@ public class ExamenModelo {
         }
         return ID;
         
+    }
+    private void llenarListas(ResultSet result, List<Examen> examenes) throws SQLException{
+        
+        while(result.next()){
+            examenes.add(new Examen(
+                    result.getInt(Examen.DB_CODIGO),
+                    result.getString(Examen.DB_NOMBRE),
+                    result.getString(Examen.DB_TIPO),
+                    result.getBoolean(Examen.DB_ORDEN),
+                    result.getDouble(Examen.DB_COSTO),
+                    result.getString(Examen.DB_DESCRIPCION)    
+            
+            ));
+            
+        }
+    }
+    
+    public List<Examen> todosExamenes() throws SQLException {
+        PreparedStatement preSt = connection.prepareStatement(EXAMEN);        
+        ResultSet result = preSt.executeQuery();        
+        List<Examen> examenes = new LinkedList<>();
+        llenarListas(result,examenes);         
+        return examenes;    
+    }
+    
+    public List<Examen> todosExamenesNombre(String nombre) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(BUSCAR_EXAMENES_NOMBRE);   
+        preSt.setString(1, "%"+nombre+"%");
+        ResultSet result = preSt.executeQuery();        
+        List<Examen> examenes = new LinkedList<>();
+        llenarListas(result,examenes);         
+        return examenes; 
     }
     
 }
