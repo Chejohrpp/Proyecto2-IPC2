@@ -28,6 +28,10 @@ public class Cita implements Serializable {
     private int pacienteCodigo;
     private String medicoCodigo;
     
+    //atributos para consultas
+    private String nombreMedico;
+    private String nombrePaciente;
+    
     public Cita(){
         
     }
@@ -46,6 +50,30 @@ public class Cita implements Serializable {
         this.pacienteCodigo = pacienteCodigo;
         this.medicoCodigo = medicoCodigo;
     }
+
+    public Cita(int codigo, String fecha, String hora, String nombreMedico) {
+        this.codigo = codigo;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.nombreMedico = nombreMedico;
+    }
+
+    public String getNombreMedico() {
+        return nombreMedico;
+    }
+
+    public void setNombreMedico(String nombreMedico) {
+        this.nombreMedico = nombreMedico;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+    
     
 
     public int getCodigo() {

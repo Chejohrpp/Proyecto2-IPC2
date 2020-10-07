@@ -60,7 +60,7 @@ public class ControladorPaciente extends HttpServlet {
                 request.getRequestDispatcher("verificar.jsp").forward(request, response);
             }
             
-        } catch (IOException | SQLException  e) {
+        } catch (IOException | SQLException |NumberFormatException e) {
             System.out.println("Error User: " + e.getMessage());
         } 
     }

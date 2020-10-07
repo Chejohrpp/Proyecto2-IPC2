@@ -57,10 +57,10 @@
             <form action="controladorExamen" method="GET">
                 <input type="submit" value="agendar un examen medico">
             </form>
-            <form action="controladorCitas" method="GET">
+            <form action="ControladorCitas" method="GET">
                 <input type="submit" value="ver citas medicas">
             </form> 
-            <form action="ControladorCitasExamen">
+            <form action="controladorCitasExamen" method="GET">
                 <input type="submit" value="ver citas de examenes">
             </form> 
             <form action="paciente/reportesPaciente.jsp">
