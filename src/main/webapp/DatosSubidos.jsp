@@ -23,7 +23,7 @@
             </form>
             <% ReadXML readXML = new ReadXML(); %>
             <form action="<% readXML.buscarDato();%>">
-                <input type="submit" value="Buscar Otro Doucumento XML">
+                <input type="submit" value="Buscar Otro Documento XML">
             </form>
         </div>
         

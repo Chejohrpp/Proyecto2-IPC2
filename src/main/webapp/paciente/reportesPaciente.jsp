@@ -18,13 +18,13 @@
             <h2>Reportes</h2>
         </div>
         <div class="informacion">            
-            <form action="#">
+            <form action="../controladorReporte5ExamenesLab" method="GET">
                 <input type="submit" value="Últimos 5 exámenes de laboratorio realizados.">
             </form>
              <form action="#">
                 <input type="submit" value="Exámenes realizados de un tipo en específico dentro de un intervalo de tiempo.">
             </form>
-             <form action="#">
+            <form action="../controladorReporte5Consultas" method="GET">
                 <input type="submit" value="Últimas 5 consultas realizadas.">
             </form>
              <form action="#">

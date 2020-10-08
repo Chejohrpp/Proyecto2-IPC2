@@ -23,8 +23,8 @@
         
         <h1>La base de datos esta vacia</h1>
         <div class="datos">
-            <% ReadXML readXML = new ReadXML(); %>
-            <form action="<% readXML.buscarDato();%>">
+            
+            <form action="DatosSubidos.jsp">
                 <input type="submit" value="Buscar archivo XML">                
             </form>        
         </div>        
