@@ -16,6 +16,8 @@
         <a href="../CodeHero.jsp"><h1>Code Hero</h1></a>
         <div class="datos">
             <h2>Reportes</h2>
+        </div>
+        <div class="informacion">            
             <form action="#">
                 <input type="submit" value="Últimos 5 exámenes de laboratorio realizados.">
             </form>
@@ -26,7 +28,7 @@
                 <input type="submit" value="Últimas 5 consultas realizadas.">
             </form>
              <form action="#">
-                <input type="submit" value="Consultas realizadas con un médico en específico dentro de un intervalo de tiempo..">
+                <input type="submit" value="Consultas realizadas con un médico en específico dentro de un intervalo de tiempo.">
             </form>
         </div>
     </body>
