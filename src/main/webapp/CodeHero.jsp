@@ -24,7 +24,7 @@
         <div class="cabecera">            
             <% String tipo=  session.getAttribute("elTipo").toString();
                 if (tipo.equalsIgnoreCase("paciente")){%>
-            <form action="paciente/perfil.jsp">
+                <form action="controladorPerfilPaciente" method="GET">
                 <input type="submit" value="modificar tu perfil">
             </form>
             <% } else if (tipo.equalsIgnoreCase("medico")){%>

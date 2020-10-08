@@ -12,7 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil</title>
         <link rel="styleSheet" href="estilosInteriores.css">
+        
     </head>    
+    <%--ADMIN PERFIL --%>
        <%@include file="cabecera.html" %>
        <div class="datos">
             <h1>Perfil</h1>

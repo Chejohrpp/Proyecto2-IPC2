@@ -38,6 +38,10 @@ public class PacienteModelo {
     
     private static String ADD_PACIENTE = "INSERT INTO " + Paciente.PACIENTE_DB_NAME+" ( " +Paciente.DB_CODIGO+","+ATRIBUTOS_PACIENTE+"," +Paciente.DB_PASSWORD+ " ) VALUES(?,?,?,?,?,?,?,?,?,AES_ENCRYPT(?,?) )";
     
+    private static String MOD_PACIENTE = "UPDATE " +Paciente.PACIENTE_DB_NAME +" SET "+Paciente.DB_NOMBRE +"=?,"
+            +Paciente.DB_GENERO +"=?, "+Paciente.DB_FECHA_NACIMIENTO +"=?,"+Paciente.DB_DPI +"=?, "+Paciente.DB_TELEFONO +"=?,"
+            +Paciente.DB_PESO +"=?, "+Paciente.DB_SANGRE +"=? ,"+Paciente.DB_EMAIL +"=?, "+Paciente.DB_PASSWORD +"=AES_ENCRYPT(?,?) WHERE "+Paciente.DB_CODIGO+"=?";
+    
     //QUERYS usando mas de una tabla
     
     private static String INFORMES = "SELECT i."+Informe.DB_HORA+",i."+Informe.DB_FECHA+",i."+Informe.DB_CODIGO+",m."+Medico.DB_NOMBRE+"  FROM "+Informe.INFORME_DB_NAME+" i, "
@@ -155,5 +159,24 @@ public class PacienteModelo {
         
         
         return resultados;
+    }
+
+    public void modPaciente(Paciente paciente) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(MOD_PACIENTE);
+        
+        
+        preSt.setString(1, paciente.getNombre());
+        preSt.setString(2, paciente.getGenero());
+        preSt.setString(3, paciente.getFechaNacimiento());
+        preSt.setString(4, paciente.getDpi());
+        preSt.setString(5, paciente.getTelefono());
+        preSt.setInt(6, paciente.getPeso());
+        preSt.setString(7, paciente.getSangre());
+        preSt.setString(8, paciente.getEmail());        
+        preSt.setString(9, paciente.getPassword());
+        preSt.setString(10, Admin.LLAVE);        
+        preSt.setInt(11, paciente.getCodigo());
+
+        preSt.executeUpdate();
     }
 }

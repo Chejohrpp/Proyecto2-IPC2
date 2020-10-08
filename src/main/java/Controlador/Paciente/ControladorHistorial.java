@@ -31,7 +31,7 @@ public class ControladorHistorial extends HttpServlet {
             int codigo = Integer.parseInt(id);
             request.setAttribute("informes", pacienteModelo.todosInformes(codigo));
             
-            request.setAttribute("resultados", pacienteModelo.todosExamenes(977693));
+            request.setAttribute("resultados", pacienteModelo.todosExamenes(codigo));
             
             request.getRequestDispatcher("/paciente/historial.jsp").forward(request, response);
         } catch (SQLException | NumberFormatException e) {

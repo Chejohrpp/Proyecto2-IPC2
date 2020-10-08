@@ -28,7 +28,7 @@ public class AdminModelo {
     private static String BUSCAR_ADMIN = ADMIN + " WHERE "+Admin.DB_CODIGO+" = ? LIMIT 1";
     
     private static String MOD_ADMIN="UPDATE "+Admin.ADMIN_DB_NAME+" SET "+Admin.DB_NOMBRE+"=?,"+Admin.DB_DPI+"=? ,"+Admin.DB_PASSWORD+"=AES_ENCRYPT(?,?)"
-            + "WHERE "+Admin.DB_CODIGO+"=?";
+            + " WHERE "+Admin.DB_CODIGO+"=?";
     
     private static Connection connection = ConnectionDB.getInstance();
 

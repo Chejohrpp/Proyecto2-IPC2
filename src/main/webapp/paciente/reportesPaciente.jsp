@@ -13,7 +13,7 @@
         <link rel="styleSheet" href="../estilosInteriores.css">
     </head>
     <body>
-        <%@include file="cabecera.html"%>
+        <a href="../CodeHero.jsp"><h1>Code Hero</h1></a>
         <div class="datos">
             <h2>Reportes</h2>
             <form action="#">
