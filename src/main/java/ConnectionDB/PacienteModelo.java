@@ -56,7 +56,7 @@ public class PacienteModelo {
     
     private static Connection connection = ConnectionDB.getInstance();
     
-    
+    //sirve para agregar un paciente a la DB, y la misma base de datos le asigna un codigo
     public long addPacienteSinCodigo(Paciente paciente) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(ADD_PACIENTE_SIN_CODIGO, Statement.RETURN_GENERATED_KEYS);
 
@@ -79,7 +79,7 @@ public class PacienteModelo {
         }
         return -1;
      }
-    
+    //obtenemos un paciente
     public Paciente obtenerPaciente(int codigo) throws SQLException {
         PreparedStatement preSt = connection.prepareStatement(BUSCAR_PACIENTE);
         preSt.setString(1, Admin.LLAVE);
@@ -102,7 +102,7 @@ public class PacienteModelo {
         }
         return paciente;
     }
-    
+    //verificamos si los datos del login coinciden con algun registro 
     public Paciente verificarLogin(int codigo, String pass) throws SQLException {
         Paciente paciente = obtenerPaciente(codigo);
         if (paciente != null && paciente.getPassword().equals(pass)) {
@@ -110,6 +110,7 @@ public class PacienteModelo {
         }
         return null;        
     }
+    //agregamos un paciente a la DB con codigo
     public void addPaciente(Paciente paciente) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(ADD_PACIENTE);
         
@@ -128,7 +129,7 @@ public class PacienteModelo {
         preSt.executeUpdate();        
      
     }
-    
+    //traemos todos los informes de un paciente
     public List<Informe> todosInformes(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(INFORMES);
         preSt.setInt(1, codigo);
@@ -146,6 +147,7 @@ public class PacienteModelo {
         return informes;
         
     }
+    //treaemos el reporte de los 5 ultimos consultas de un paciente
     public List<Informe> todosInformesLimite5(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(INFORMES_LIMITE5);
         preSt.setInt(1, codigo);
@@ -163,7 +165,7 @@ public class PacienteModelo {
         return informes;
         
     }
-    
+    //treamos todo los examenes de un paciente
     public List<Resultado> todosExamenes(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(RESULTADOS);
         preSt.setInt(1, codigo);
@@ -181,6 +183,7 @@ public class PacienteModelo {
         
         return resultados;
     }
+    //lo usamos para el reporte de los ultimos 5 examenes de un paciente
     public List<Resultado> todosExamenesLimit5(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(RESULTADOS_LIMIT5);
         preSt.setInt(1, codigo);
@@ -198,7 +201,7 @@ public class PacienteModelo {
         
         return resultados;
     }
-
+    //es para modificar los datos de algun paciente
     public void modPaciente(Paciente paciente) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(MOD_PACIENTE);
         

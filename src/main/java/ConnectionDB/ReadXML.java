@@ -50,14 +50,14 @@ public class ReadXML {
     private void leerXML(){
          try {
             File archivo = new File(path);
-            
+            //creamos el documento que se pueda entender
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document =  documentBuilder.parse(archivo);
             
-            document.getDocumentElement().normalize();
+            document.getDocumentElement().normalize();//hacemos que el documento se comporte de una manera statica
             
-            System.out.println("Elemento raiz: " + document.getDocumentElement().getNodeName());
+            //System.out.println("Elemento raiz: " + document.getDocumentElement().getNodeName());
             
             //lista de los objetos
             NodeList listaAdmins = document.getElementsByTagName("admin");
@@ -87,6 +87,7 @@ public class ReadXML {
             e.printStackTrace();
         }
     }
+    //usamos para agregar los adminis a la base de datos
     private void admins(NodeList listaAdmins){
         AdminModelo adminModelo = new AdminModelo();
         for(int i = 0 ; i < listaAdmins.getLength() ; i++) {
@@ -112,6 +113,7 @@ public class ReadXML {
             }
         }
     }
+    //se usa este metodo para llevar los doctores a la DB
     private void doctors(NodeList listaDoctors){
         MedicoModelo medicoModelo = new MedicoModelo();
         ConsultaModelo consultaModelo = new ConsultaModelo();
@@ -123,7 +125,7 @@ public class ReadXML {
                 
                 if(nodo.getNodeType() == Node.ELEMENT_NODE) {
                     
-                    Element element = (Element) nodo;
+                    Element element = (Element) nodo;//recopilamos el elemto elegido en el index acutal
                     String codigo = element.getElementsByTagName("CODIGO").item(0).getTextContent();                   
                     String nombre = element.getElementsByTagName("NOMBRE").item(0).getTextContent();
                     String colegiado = element.getElementsByTagName("COLEGIADO").item(0).getTextContent();
@@ -140,7 +142,7 @@ public class ReadXML {
                     medicoModelo.addMedico(medico);
                     
                     
-                    
+                    //usamos esot para llenar todas las espeicalidades que tiene un doctor y subirlo a la DB
                     NodeList listaEspecialidades = element.getElementsByTagName("ESPECIALIDAD"); 
                     try{
                         int cant = 0;
@@ -168,7 +170,7 @@ public class ReadXML {
             }            
        }
     }
-    
+    //usamos esto para agregar los laboratoristas a la DB
     private void laboratoristas(NodeList listaLaboratoristas){
         
         LaboratoristaModelo laboristaModelo = new LaboratoristaModelo();
@@ -231,7 +233,7 @@ public class ReadXML {
         }
         
     }
-
+//usamos este metodo para llevar a los pacientes a la DB
     private void pacientes(NodeList listaPacientes) {
         PacienteModelo pacienteModelo = new PacienteModelo();
         
@@ -263,7 +265,7 @@ public class ReadXML {
         }
         
     }
-
+//usamos este metodo para llevar todos los examenes a la DB
     private void examens(NodeList listaExamen) {
         ExamenModelo examenModelo = new ExamenModelo();
         
@@ -388,7 +390,7 @@ public class ReadXML {
         }
         
     }
-
+//usamos este bloque de codigo para llevar a las citas a la DB
     private void citas(NodeList listaCitas) {
         CitaModelo citaModelo = new CitaModelo();
         
@@ -419,7 +421,7 @@ public class ReadXML {
         }
         
     }
-
+//usamos este metodo para llevar la consutlas a la DB
     private void consultas(NodeList listaConsultas) {
         ConsultaModelo consulta = new ConsultaModelo();
         

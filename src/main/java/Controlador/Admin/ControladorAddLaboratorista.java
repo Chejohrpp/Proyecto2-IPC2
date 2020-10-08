@@ -55,15 +55,15 @@ public class ControladorAddLaboratorista extends HttpServlet{
             String telefono = request.getParameter("telefono");
             String examen = request.getParameter("examen");            
             int idExamen = examenModelo.buscarIdExamen(examen);//se necesita el id del examen
-             System.out.println(idExamen);
+             //System.out.println(idExamen);
             String email = request.getParameter("email");
             String fecha = request.getParameter("fecha");        
             String pass = request.getParameter("pass");
-             System.out.println("llego hata aqui?");
+            // System.out.println("llego hata aqui?");
             
             if (nombre != null && codigo != null && pass != null && numRegistro != null && dpi != null && telefono != null && fecha != null && email != null) {  
                 
-                System.out.println("llego hata aqui??????");
+                //System.out.println("llego hata aqui??????");
                 laboratoristaModelo.addLaboratorista(new Laboratorista(codigo,nombre,numRegistro,dpi,telefono,email,fecha,idExamen,pass));
                 
                 if (request.getParameter("Lunes") != null) {

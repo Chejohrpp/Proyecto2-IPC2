@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConnectionDB {
     private static Connection connection = null;
     private static ConnectionDB connectionDB;
-    
+    //hacemos conexion con la base de datos
     private ConnectionDB(){
         String url = "jdbc:mysql://localhost:3306/code_hero?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
         String user = "user";
@@ -32,6 +32,7 @@ public class ConnectionDB {
             Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //utilizaremoo esto para extraer la conexion de la base de datos a cualquier otra clase de java o incluso en jsp
     public static Connection getInstance(){
         if (connectionDB == null) {
             connectionDB = new ConnectionDB();
