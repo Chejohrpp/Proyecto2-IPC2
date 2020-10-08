@@ -75,8 +75,9 @@ public class ExamenModelo {
     public List<Examen> todosExamenes() throws SQLException {
         PreparedStatement preSt = connection.prepareStatement(EXAMEN);        
         ResultSet result = preSt.executeQuery();        
-        List<Examen> examenes = new LinkedList<>();
-        llenarListas(result,examenes);         
+        List<Examen> examenes = new LinkedList<>();        
+        llenarListas(result,examenes);        
+        
         return examenes;    
     }
     

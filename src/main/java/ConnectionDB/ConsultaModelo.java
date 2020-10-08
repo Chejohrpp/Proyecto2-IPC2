@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import objetos.Admin;
 import objetos.Especialidad;
 
@@ -19,6 +21,7 @@ import objetos.Especialidad;
 public class ConsultaModelo {
     
     private static String ADD_CONSULTA = "INSERT INTO "+ Especialidad.ESPECIALIDAD_DB_NAME + " ( "+ Especialidad.DB_NOMBRE+","+Especialidad.DB_PRECIO+") VALUES(?,?)";
+    private static String ESPECIALIDAD = "SELECT * FROM " +Especialidad.ESPECIALIDAD_DB_NAME;
     
     private static String BUSCAR_ID_ESPECIALIDAD = "SELECT " + Especialidad.DB_ID +" FROM " + Especialidad.ESPECIALIDAD_DB_NAME + " WHERE " +Especialidad.DB_NOMBRE +" = ? LIMIT 1";
     private Connection connection = ConnectionDB.getInstance();
@@ -40,7 +43,22 @@ public class ConsultaModelo {
         if (result.next()) {
             ID= result.getInt(1);
         }
-        return ID;
+        return ID;        
+    }
+    
+    public List<Especialidad> todasEspecialidades() throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(ESPECIALIDAD);
+        ResultSet result = preSt.executeQuery();
+        List<Especialidad> especialidades = new LinkedList<>();
+        while(result.next()){
+            especialidades.add(new Especialidad(
+                    result.getInt(Especialidad.DB_ID),
+                    result.getString(Especialidad.DB_NOMBRE),
+                    result.getDouble(Especialidad.DB_PRECIO)
+            ));
+            
+        }
+        return especialidades;
         
     }
 }

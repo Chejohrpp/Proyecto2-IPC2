@@ -4,19 +4,34 @@
     Author     : sergi
 --%>
 
+<%@page import="objetos.Examen"%>
+<%@page import="java.util.List"%>
+<%@page import="ConnectionDB.ExamenModelo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Laboratorista</title>
-        <link rel="styleSheet" href="../estilosInteriores.css">
+        <link rel="styleSheet" href="estilosInteriores.css">
+        <style>            
+            #error {
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <%@include file="cabecera.html" %>
         <div class="datos">
             <h2>Agregar Laboratorista</h2>
-            <form action="verificarLab.jsp">
+            <c:if test="${success == 0}">
+            <label id="error">Error, no se logro llenar registrar al medico, Vuelva a intentarlo</label>
+            </c:if>
+            <c:if test="${success == 1}">
+            <label id="error">Ingrese todos los valores requeridos</label>
+            </c:if>
+            <form action="controladorAddLab" method="POST">
                 <%-- codigo --%>
                 <label for="codigo">Codigo</label>
                 <input type="text" name="codigo" placeholder="codigo">  
@@ -25,7 +40,7 @@
                 <input type="text" name="nombre" placeholder="Nombre">  
                 <%-- numero de registro ante el ministerio de salud --%>
                 <label for="numRegistro">Numero de registro ante el ministerio de salud</label>
-                <input type="number" name="numRegistro" placeholder="Numero de registro">  
+                <input type="text" name="numRegistro" placeholder="Numero de registro">  
                 <%-- DPI --%>
                 <label for="dpi">DPI</label>
                 <input type="number" name="dpi" placeholder="DPI">  
@@ -34,9 +49,14 @@
                 <input type="number" name="telefono" placeholder="Telefono">  
                 <%-- Examen --%>
                 <label for="examen">Tipo de Examen</label>
-                 <select name="examen" id="tipoExamen">
-                <% for(int i = 0; i<=10;i++){%>               
-                    <option>hola</option>                
+                <% 
+                        ExamenModelo examenModelo = new ExamenModelo();
+                        List<Examen> examenes = examenModelo.todosExamenes();
+                        
+                 %>
+                 <select name="examen" id="tipoExamen">           
+                <% for(int i = 0; i<examenes.size();i++){%>               
+                    <option><%=examenes.get(i).getNombre()%></option>                
                 <% } %>
                 </select>
                 <%-- Dias --%>
@@ -60,10 +80,10 @@
                 
                 <%-- contraseña --%>
                 <label for="codigo">Contraseña</label>
-                <input type="text" name="contraseña" placeholder="Contraseña">  
+                <input type="password" name="pass" placeholder="Contraseña">  
                 <input type="submit" value="Registrar">
             </form>
-             <form action="../CodeHero.jsp">
+             <form action="CodeHero.jsp">
                 <input type="submit" value="Regresar">
             </form>
         </div>

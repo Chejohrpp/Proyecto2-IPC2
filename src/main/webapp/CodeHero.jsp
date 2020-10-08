@@ -36,7 +36,7 @@
                 <input type="submit" value="modificar tu perfil">
             </form>
             <% } else if (tipo.equalsIgnoreCase("Admin")){%>
-            <form action="Admin/perfil.jsp">
+            <form action="controladorPerfilAdmin" method="GET">
                 <input type="submit" value="modificar tu perfil">
             </form>
             <% }%>
@@ -72,10 +72,10 @@
         <%--para el Admin --%>
          <% } else if (tipo.equalsIgnoreCase("Admin")){%>
         <div class="paciente">
-            <form action="Admin/addMedico.jsp">
+            <form action="controladorAddMedico" method="GET">
                 <input type="submit" value="agregar medico">
             </form>
-            <form action="Admin/AddLaboratorista.jsp">
+            <form action="controladorAddLab" method="GET">
                 <input type="submit" value="agregar laboratorista">
             </form>
             <form action="Admin/precioConsulta.jsp">

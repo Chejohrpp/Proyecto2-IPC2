@@ -27,6 +27,9 @@ public class AdminModelo {
     
     private static String BUSCAR_ADMIN = ADMIN + " WHERE "+Admin.DB_CODIGO+" = ? LIMIT 1";
     
+    private static String MOD_ADMIN="UPDATE "+Admin.ADMIN_DB_NAME+" SET "+Admin.DB_NOMBRE+"=?,"+Admin.DB_DPI+"=? ,"+Admin.DB_PASSWORD+"=AES_ENCRYPT(?,?)"
+            + "WHERE "+Admin.DB_CODIGO+"=?";
+    
     private static Connection connection = ConnectionDB.getInstance();
 
     public AdminModelo() {
@@ -42,6 +45,18 @@ public class AdminModelo {
         preSt.setString(4, admin.getPassword());        
         preSt.setString(5, Admin.LLAVE);
         preSt.executeUpdate();        
+    }
+    public void modAdmin(Admin admin) throws SQLException{
+        
+        PreparedStatement preSt = connection.prepareStatement(MOD_ADMIN);
+        
+        preSt.setString(1, admin.getNombre());
+        preSt.setString(2, admin.getDpi());
+        preSt.setString(3, admin.getPassword());        
+        preSt.setString(4, Admin.LLAVE);
+        preSt.setString(5, admin.getCodigo());
+        preSt.executeUpdate();        
+
     }
     
     public static int cantAdmins() throws SQLException{
